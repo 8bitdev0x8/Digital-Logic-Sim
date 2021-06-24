@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class CreateMenu : MonoBehaviour {
 
 	public event System.Action onChipCreatePressed;
-
+    public ButtonText textss;
 	public Button menuOpenButton;
 	public GameObject menuHolder;
 	public TMP_InputField chipNameField;
@@ -33,6 +33,7 @@ public class CreateMenu : MonoBehaviour {
 		hueSlider.onValueChanged.AddListener (ColourSliderChanged);
 		saturationSlider.onValueChanged.AddListener (ColourSliderChanged);
 		valueSlider.onValueChanged.AddListener (ColourSliderChanged);
+		
 	}
 
 	void Update () {

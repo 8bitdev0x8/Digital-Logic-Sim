@@ -10,6 +10,7 @@ using TMPro;
 using UnityEngine.UI;
 using System.Diagnostics;
 using System;
+using SFB;
 
 public class EditChipMenu : MonoBehaviour
 {
@@ -27,6 +28,8 @@ public class EditChipMenu : MonoBehaviour
 
     private bool init = false;
     private bool focused = false;
+
+  
 
     public void Init()
     {
@@ -147,6 +150,7 @@ public class EditChipMenu : MonoBehaviour
 
     public void ExportChip()
     {
+        /*
         #if UNITY_EDITOR
         string path = EditorUtility.SaveFilePanel(
             "Export chip design",
@@ -156,8 +160,13 @@ public class EditChipMenu : MonoBehaviour
         );
         if (path.Length != 0) {
             ChipSaver.Export(currentChip, path);
-        }
+        }       
         #endif
+        */
+
+        var spath = StandaloneFileBrowser.SaveFilePanel("Save File", "",currentChip.chipName, "dls");
+        ChipSaver.Export(currentChip, spath);
+       
     }
     
 
