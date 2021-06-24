@@ -164,8 +164,9 @@ public class EditChipMenu : MonoBehaviour
         #endif
         */
 
-        var spath = StandaloneFileBrowser.SaveFilePanel("Save File", "",currentChip.chipName, "dls");
-        ChipSaver.Export(currentChip, spath);
+        //var spath = StandaloneFileBrowser.SaveFilePanel("Save File", "",currentChip.chipName, "dls");
+        StandaloneFileBrowser.SaveFilePanelAsync("Save File", "", currentChip.chipName, "dls", (string spath) => { ChipSaver.Export(currentChip, spath); });
+        
        
     }
     

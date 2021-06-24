@@ -35,9 +35,10 @@ public class ImportButton : MonoBehaviour
         #endif
         */
 
-        var opath = StandaloneFileBrowser.OpenFilePanel("Open File", "", "dls", false);
-        print("opath0" + opath[0]);
-        ChipLoader.Import(opath[0]);
+        //var opath = StandaloneFileBrowser.OpenFilePanel("Open File", "", "dls", false);
+        StandaloneFileBrowser.OpenFilePanelAsync("Open File", "", "dls", false, (string[] opath) => { ChipLoader.Import(opath[0]); });
+        //print("opath0" + opath[0]);
+        
         EditChipBar();
 
     }
