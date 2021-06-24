@@ -22,22 +22,13 @@ public class ImportButton : MonoBehaviour
 
     void ImportChip() {
 
-        /*
-        #if UNITY_EDITOR
-        string path = EditorUtility.OpenFilePanel(
-            "Import chip design",
-            "",
-            "dls"
-        );
-        ChipLoader.Import(path);
-        EditChipBar();
-        return;
-        #endif
-        */
-
-        //var opath = StandaloneFileBrowser.OpenFilePanel("Open File", "", "dls", false);
-        StandaloneFileBrowser.OpenFilePanelAsync("Open File", "", "dls", false, (string[] opath) => { ChipLoader.Import(opath[0]); });
-        //print("opath0" + opath[0]);
+       
+        StandaloneFileBrowser.OpenFilePanelAsync("Open File", "", "dls", false, (string[] opath) => {
+            if (string.IsNullOrEmpty(opath[0]))
+                return;
+            ChipLoader.Import(opath[0]); 
+        });
+        
         
         EditChipBar();
 

@@ -150,22 +150,12 @@ public class EditChipMenu : MonoBehaviour
 
     public void ExportChip()
     {
-        /*
-        #if UNITY_EDITOR
-        string path = EditorUtility.SaveFilePanel(
-            "Export chip design",
-            "",
-            currentChip.chipName + ".dls",
-            "dls"
-        );
-        if (path.Length != 0) {
-            ChipSaver.Export(currentChip, path);
-        }       
-        #endif
-        */
-
-        //var spath = StandaloneFileBrowser.SaveFilePanel("Save File", "",currentChip.chipName, "dls");
-        StandaloneFileBrowser.SaveFilePanelAsync("Save File", "", currentChip.chipName, "dls", (string spath) => { ChipSaver.Export(currentChip, spath); });
+        
+        StandaloneFileBrowser.SaveFilePanelAsync("Save File", "", currentChip.chipName, "dls", (string spath) => {
+            if (string.IsNullOrEmpty(spath))
+                return;
+            ChipSaver.Export(currentChip, spath); 
+        });
         
        
     }
